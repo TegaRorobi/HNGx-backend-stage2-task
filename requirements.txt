@@ -1,5 +1,4 @@
 Django==4.2.5
-Pillow==9.5.0
 python-decouple==3.8
 djangorestframework==3.14.0
 django-cors-headers==3.14.0

@@ -17,6 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from api.views import PersonsViewSet
+
+LIST_CREATE = {'get':'list', 'post':'create'}
+RETRIEVE_UPDATE_DESTROY = {'get':'retrieve', 'put':'update', 'patch':'partial_update', 'delete':'destroy'}
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', PersonsViewSet.as_view(LIST_CREATE), name='persons-list'),
+    path('api/<str:pk>/', PersonsViewSet.as_view(RETRIEVE_UPDATE_DESTROY), name='person-detail'),
 ]

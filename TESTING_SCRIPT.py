@@ -25,8 +25,8 @@ email = args.email or 'Joma@gmail.com'
 bio = args.bio or 'Tech youtuber.'
 
 # endpoints
-list_create = 'http://localhost:8000/api/persons/'
-retrieve_update_destroy = f'http://localhost:8000/api/persons/{name}/'
+list_create = 'http://tegarorobi.pythonanywhere.com/api/persons/'
+retrieve_update_destroy = f'http://tegarorobi.pythonanywhere.com/api/persons/{name}/'
 
 
 print(f"Create Person object: {name}")

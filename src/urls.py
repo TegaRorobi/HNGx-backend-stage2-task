@@ -25,5 +25,5 @@ RETRIEVE_UPDATE_DESTROY = {'get':'retrieve', 'put':'update', 'patch':'partial_up
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/persons/', PersonsViewSet.as_view(LIST_CREATE), name='persons-list'),
-    path('api/persons/<str:name>/', PersonsViewSet.as_view(RETRIEVE_UPDATE_DESTROY), name='person-detail'),
+    path('api/persons/<str:user_id>/', PersonsViewSet.as_view(RETRIEVE_UPDATE_DESTROY), name='person-detail'),
 ]

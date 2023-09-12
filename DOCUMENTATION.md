@@ -17,11 +17,11 @@ to JSON which is outputted as the response.
 
 Here are the routes for the api:
 ```
-/api/persons/
-/api/persons/<str:user_id>/
+/api/
+/api/<str:user_id>/
 ```
 
-The `/api/persons/` route accepts the following request methods:
+The `/api/` route accepts the following request methods:
 
 - `GET` : List out all `Person` model objects in the database
 	- Returns JSON data of all `Person` instances
@@ -31,7 +31,7 @@ The `/api/persons/` route accepts the following request methods:
 	- Returns JSON data of the created instance
 
 
-And, the `/api/persons/<str:user_id>/` accepts the following request methods, 
+And, the `/api/<str:user_id>/` accepts the following request methods, 
 where `<str:user_id>` is a dynamic value.  
 **Note**: _user\_id_ can either be the name or the id of the object.
 
@@ -99,19 +99,19 @@ pip install httpie
 ```
 
 Okay, say we have a guy named _John_ we want to add to our database, we would make a post request
-to `/api/persons/` as highlighted in the [api overview](#api-overview-). We would also send our post data as JSON, 
+to `/api/` as highlighted in the [api overview](#api-overview-). We would also send our post data as JSON, 
 and the JSON would be deserialized to a python object and saved to the database.
 ```
-http post :8000/api/persons/ name='John' email='johndboss@django.site' bio='I love cakes!' --json 
+http post :8000/api/ name='John' email='johndboss@django.site' bio='I love cakes!' --json 
 ```
 The `--json` flag ensures the post data is packaged as JSON.
   
 Let's add some more people:
 ```
-http post :8000/api/persons/ name='Yvonne' email='yvgirl@django.site' bio='Software engineer @ Google' --json 
+http post :8000/api/ name='Yvonne' email='yvgirl@django.site' bio='Software engineer @ Google' --json 
 ```
 ```
-http post :8000/api/persons/ name='Mark Essien' email='markessien@django.site' bio='Head mentor at HNG' --json 
+http post :8000/api/ name='Mark Essien' email='markessien@django.site' bio='Head mentor at HNG' --json 
 ```
 
 Now that we have some objects in our database, let's update one of them.  
@@ -120,26 +120,26 @@ Let's say Yvonne got a new job at Deciphrexx Inc., let's try to update her bio. 
 we would make a `patch` or `put` request to the detail endpoint. Since we just want to update the bio field, 
 we'll make a `patch` request.
 ```
-http patch :8000/api/persons/Yvonne/ bio='Software engineer @ Deciphrexx Inc.' --json
+http patch :8000/api/Yvonne/ bio='Software engineer @ Deciphrexx Inc.' --json
 ```
   
 Let's now assume we want some information about _Mark_, so we need to retrieve his information 
-using the `/api/persons/<str:name>/` endpoint. Here's how we would do it: 
+using the `/api/<str:name>/` endpoint. Here's how we would do it: 
 ```
-http get ':8000/api/persons/Mark Essien/'
+http get ':8000/api/Mark Essien/'
 ```
 OR
 ```
-http get :8000/api/persons/Mark%20Essien/
+http get :8000/api/Mark%20Essien/
 ```
 Finally, let's delete an object from the database, say _John_:
 ```
-http delete :8000/api/persons/John/
+http delete :8000/api/John/
 ```
-And finally, to list out the remaining objects in our database, we would make a get request to the `/api/persons/` 
+And finally, to list out the remaining objects in our database, we would make a get request to the `/api/` 
 endpoint.
 ```
-http get :8000/api/persons/
+http get :8000/api/
 ```
 
 <br>

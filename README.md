@@ -21,17 +21,17 @@ The `Person` model possesses the following fields:
 
 Here are the routes for the api:
 ```
-/api/persons/
-/api/persons/<str:user_id>/
+/api/
+/api/<str:user_id>/
 ```
 
-The `/api/persons/` route accepts the following request methods:
+The `/api/` route accepts the following request methods:
 
 - `GET` : List out all `Person` instances in the database
 - `POST` : Create a new `Person` instance with the post data
 
 
-And, the `/api/persons/<str:user_id>/` accepts the following request methods, 
+And, the `/api/<str:user_id>/` accepts the following request methods, 
 where `<str:user_id>` is a dynamic value that will be used to retrieve a specific instance.  
 **Note**: _user\_id_ can either be the name or the id of the object.
 

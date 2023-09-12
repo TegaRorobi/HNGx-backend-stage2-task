@@ -3,3 +3,4 @@ src/__pycache__/
 api/__pycache__/
 
 .env
+*.pyc

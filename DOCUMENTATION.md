@@ -50,6 +50,12 @@ where `<str:name>` is a dynamic value:
 
 <br>
 
+## UML Diagrams 📄
+
+UML diagrams are available in the root directory in the _Diagrams_ file folder.
+
+<br>
+
 ## Model OverView 🔬
 
 The `Person` model possesses the following fields:
@@ -68,7 +74,12 @@ endpoint.
 
 <br>
 
+## Testing 🔍
 
+A python script is made available in the root directory, and can be run with command line arguments to 
+perform CRUD operations and print out the JSON responses to stdout.
+
+<br>
 
 ## Example Usage 🚀
 

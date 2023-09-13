@@ -18,7 +18,7 @@ to JSON which is outputted as the response.
 Here are the routes for the api:
 ```
 /api/persons/
-/api/persons/<str:name>/
+/api/persons/<str:user_id>/
 ```
 
 The `/api/persons/` route accepts the following request methods:
@@ -31,10 +31,11 @@ The `/api/persons/` route accepts the following request methods:
 	- Returns JSON data of the created instance
 
 
-And, the `/api/persons/<str:name>/` accepts the following request methods, 
-where `<str:name>` is a dynamic value:
+And, the `/api/persons/<str:user_id>/` accepts the following request methods, 
+where `<str:user_id>` is a dynamic value.  
+**Note**: _user\_id_ can either be the name or the id of the object.
 
-- `GET` : Retrive a `Person` instance with possessing the provided name
+- `GET` : Retrive a `Person` instance with possessing the provided parameter (id or name)
 	- Returns JSON data of a `Person` instance
 
 - `PUT` : Update all writeable fields in `Person` instance 
@@ -60,7 +61,7 @@ UML diagrams are available in the root directory in the _Diagrams_ file folder.
 
 The `Person` model possesses the following fields:
 
-- `name` - CharField with the unique argument set to `True`. This field will be used as the lookup field for the detail 
+- `name` - CharField with the unique argument set to `True`. This field will be used as a lookup field for the detail 
 endpoint.  
 - `email` - EmailField, which comes with an EmailValidator and stores the email address of the instance.  
 - `bio` - TextField with the `null` and `blank` arguments set to `True` and stores a short biography of the instance
@@ -78,6 +79,13 @@ endpoint.
 
 A python script is made available in the root directory, and can be run with command line arguments to 
 perform CRUD operations and print out the JSON responses to stdout.
+
+<br>
+
+## Limitations/ Edge cases💀
+If an object's name is made up of only numeric digits, and you attempt to retrieve the object by name, 
+the api may get confused and think the parameter is an id and then search for an object with that id.  
+For this reason, it is safer (though less explicit) to retrieve objects by id.
 
 <br>
 
